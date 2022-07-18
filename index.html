@@ -8,15 +8,18 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@3"></script>
-    <div id="app"></div>
+    <div id="app">
+    </div>
     <script>
         const vm = Vue.createApp({
             data(){
                 return {
-                    text: "Hola Vue"
+                    attr: "src",
+                    img: "https://soymotor.com/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/imagenes/noticia/red-bull-helmut-marko-rb12-laf1.jpg",
+                    alt: "RB12"
                 };
             },
-            template: `<h1 v-text="text"></h1>`
+            template: `<img v-bind:[attr]="img"/>`
         }).mount("#app")
     </script>
 </body>
