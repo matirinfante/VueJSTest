@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script src="https://unpkg.com/vue@3"></script>
-    <div id="app">
-    </div>
+    <div id="app"></div>
     <script>
-        const vm = Vue.createApp({
-            data(){
-                return {
-                   counter: 0
-                };
-            },
-            methods: {
-                increment(){
-                    this.counter++;
-                }
-            },
-            template: `<button v-on:click="increment">{{counter}}</button>`
-        }).mount("#app")
+      const vm = Vue.createApp({
+        data() {
+          return {
+            event : "submit",
+            counter: 0,
+          };
+        },
+        methods: {
+          submit(e) {
+            this.counter++;
+            e.preventDefault();
+          },
+        },
+        template: `<form v-on:[event]="submit"><button>{{counter}}</button></form>`,
+      }).mount("#app");
     </script>
-</body>
+  </body>
 </html>
