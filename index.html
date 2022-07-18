@@ -14,12 +14,15 @@
         const vm = Vue.createApp({
             data(){
                 return {
-                    attr: "src",
-                    img: "https://soymotor.com/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/imagenes/noticia/red-bull-helmut-marko-rb12-laf1.jpg",
-                    alt: "RB12"
+                   counter: 0
                 };
             },
-            template: `<img v-bind:[attr]="img"/>`
+            methods: {
+                increment(){
+                    this.counter++;
+                }
+            },
+            template: `<button v-on:click="increment">{{counter}}</button>`
         }).mount("#app")
     </script>
 </body>
