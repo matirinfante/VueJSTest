@@ -13,24 +13,31 @@
     const vm = Vue.createApp({
         data() {
             return {
-                title: "Computed properties",
-                firstName: "Matias",
-                lastName: "Infante",
-                now: new Date()
+                stateText: "Puerta cerrada",
+                doorState: false,
             };
         },
+        watch: {
+            doorState(value) {
+                value ? this.stateText = "Puerta abierta" : this.stateText = "Puerta cerrada";
+            }
+        },
         computed: {
-            fullName() {
-                return this.firstName + " " + this.lastName;
-            },
-            today() {
-                return this.now.toLocaleDateString();
+            label() {
+                return this.doorState ? "Cerrar" : "Abrir"
+            }
+        },
+        methods: {
+            changeState() {
+                this.doorState = !this.doorState;
             }
         },
         template: `
-          <div><h1>{{ title }}</h1></div>
-          <div>{{ fullName }}</div>
-          <div>{{ today }}</div>`,
+          <div><h3>{{ stateText }}</h3>
+          <button @click="changeState">{{ label }}</button>
+          </div>
+
+        `,
     }).mount("#app");
 </script>
 </body>
